@@ -7,13 +7,13 @@ struct process
 };
 struct process a[10];
 
-// function for swapping
+//Swapping function
 void swap(int *b,int *c)
 {
-    int tem;
-    tem=*c;
+    int temp;
+    temp=*c;
     *c=*b;
-    *b=tem;
+    *b=temp;
 }
 
 //Driver function
@@ -25,13 +25,16 @@ int main()
     printf("Enter the number of process \n");
     scanf("%d",&n);
     printf("Enter the Arrival time , Burst time and priority of the process\n");
-    printf("AT BT PR\n");
     for(int i=0;i<n;i++)
-    {
-        scanf("%d%d%d",&a[i].AT,&a[i].BT,&a[i].PR);
+    {   
+        printf("AT\n");
+        scanf("%d",&a[i].AT);
+        printf("BT\n");
+        scanf("%d",&a[i].BT);
+        printf("PR\n");
+        scanf("%d",&a[i].PR);
         a[i].id=i+1;
-        // here we are checking that arrival time 
-        // of the process are same or different
+        //Checking if arrival time is same or different
         if(i==0)
          check_ar=a[i].AT;
          
@@ -39,8 +42,7 @@ int main()
          check_ar=1;
         
     }
-    // if process are arrived at the different time 
-    // then sort the process on the basis of AT
+    // Sort the process on the basis of AT
     if(check_ar!=0)
     {
         for(int i=0;i<n;i++)
@@ -58,13 +60,10 @@ int main()
         }
     }
     
-    // logic of Priority scheduling ( non preemptive) algo
-    // if all the process are arrived at different time
     if(check_ar!=0)
     {
         a[0].WT=a[0].AT;
         a[0].TAT=a[0].BT-a[0].AT;
-        // cmp_time for completion time
         Cmp_time=a[0].TAT;
         Total_WT=Total_WT+a[0].WT;
         Total_TAT=Total_TAT+a[0].TAT;
@@ -90,14 +89,14 @@ int main()
             Cmp_time=Cmp_time+a[i].BT;
             
             // Turn Around Time of the process
-            // compl-Arival
+            // compl-Arrival
             a[i].TAT=Cmp_time-a[i].AT;
             Total_TAT=Total_TAT+a[i].TAT;
             
         }
     }
     
-    // if all the process are arrived at same time
+    // If all the process arrived at same time
     else
     {
         for(int i=0;i<n;i++)
@@ -133,7 +132,7 @@ int main()
     Avg_WT=Total_WT/n;
     Avg_TAT=Total_TAT/n;
 
-    // Printing of the results
+    // Printing results
     printf("The process are\n");
     printf("ID WT TAT\n");
     for(int i=0;i<n;i++)
@@ -142,6 +141,6 @@ int main()
     }
     
     printf("Avg waiting time is: %f\n",Avg_WT);
-    printf("Avg turn around time is: %f",Avg_TAT);
+    printf("Avg turn around time is: %f\n",Avg_TAT);
     return 0;
 }

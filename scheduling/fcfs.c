@@ -5,17 +5,19 @@ int main()
 {
     int AT[10],BT[10],WT[10],TT[10],n;
     int burst=0,cmpl_T;
-    float Avg_WT,Avg_TT,Total=0;
+    float avg_WT,avg_TT,total=0;
     printf("Enter number of the process\n");
     scanf("%d",&n);
     printf("Enter Arrival time and Burst time of the process\n");
-    printf("AT\tBT\n");
     for(int i=0;i<n;i++)
     {
-        scanf("%d%d",&AT[i],&BT[i]);
+        printf("AT\n");
+        scanf("%d",&AT[i]);
+        printf("BT\n");
+        scanf("%d",&BT[i]);
     }
     
-    // Logic for calculating Waiting time
+    //Calculating Waiting time
     for(int i=0;i<n;i++)
     {
         if(i==0)
@@ -23,29 +25,28 @@ int main()
         else
             WT[i]=burst-AT[i];
         burst+=BT[i];
-        Total+=WT[i];
+        total+=WT[i];
     }
-    Avg_WT=Total/n;
+    avg_WT=total/n;
     
-    // Logic for calculating Turn around time
+    //Calculating Turn around time
     cmpl_T=0;
-    Total=0;
+    total=0;
     for(int i=0;i<n;i++)
     {
         cmpl_T+=BT[i];
         TT[i]=cmpl_T-AT[i];
-        Total+=TT[i];
+        total+=TT[i];
     }
-    Avg_TT=Total/n;
+    avg_TT=total/n;
     
-    // printing of outputs
-    
-    printf("Process ,Waiting_time ,TurnA_time\n");
+    //Printing outputs
+    printf("Process  Waiting_Time  Turnaround_Time\n");
     for(int i=0;i<n;i++)
     {
         printf("%d\t\t%d\t\t%d\n",i+1,WT[i],TT[i]);
     }
-    printf("Average waiting time is : %f\n",Avg_WT);
-    printf("Average turn around time is : %f\n",Avg_TT);
+    printf("Average Waiting time is : %f\n",avg_WT);
+    printf("Average Turnaround time is : %f\n",avg_TT);
     return 0;
 } 
