@@ -1,5 +1,3 @@
-//https://www.easycodingzone.com/2021/06/c-program-on-priority-scheduling.html
-
 #include<stdio.h>
 struct process
 {
