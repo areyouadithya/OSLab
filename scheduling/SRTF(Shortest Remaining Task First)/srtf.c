@@ -14,11 +14,12 @@ int main()
     printf("Enter the number of the process\n");
     scanf("%d",&n);
     printf("Enter the arrival time and burst time of the process\n");
-    printf("AT WT\n");
     for(int i=0;i<n;i++)
     {
-        scanf("%d%d",&a[i].AT,&a[i].BT);
-        
+        printf("AT\n");
+        scanf("%d",&a[i].AT);
+        printf("BT\n");
+        scanf("%d",&a[i].BT);
         // copying the burst time in
         // a temp array for the further use
         // in calculation of WT
