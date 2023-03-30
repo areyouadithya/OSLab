@@ -1,5 +1,3 @@
-//https://www.easycodingzone.com/2021/06/c-program-on-fcfsfirst-come-first-serve.html
-
 #include<stdio.h>
 int main()
 {
