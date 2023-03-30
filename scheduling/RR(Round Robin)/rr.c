@@ -38,10 +38,12 @@ int main()
     printf("Enter the number of the process\n");
     scanf("%d",&n);
     printf("Enter the arrival time and burst time of the process\n");
-    printf("AT BT\n");
     for(int i=0;i<n;i++)
     {
-        scanf("%d%d",&a[i].AT,&a[i].BT);
+        printf("AT\n");
+        scanf("%d",&a[i].AT);
+        printf("BT\n");
+        scanf("%d",&a[i].BT);
         a[i].id=i;
         temp[i]=a[i].BT;
     }
