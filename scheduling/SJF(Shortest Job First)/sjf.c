@@ -1,5 +1,3 @@
-//https://www.easycodingzone.com/2021/06/program-of-sjfshortest-job-first.html
-
 #include<stdio.h>
 struct process
 {
