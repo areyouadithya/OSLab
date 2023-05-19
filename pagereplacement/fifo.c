@@ -1,47 +1,46 @@
-include < stdio.h >  
-int main()  
-{  
-    int incomingStream[] = {4 , 1 , 2 , 4 , 5};  
+#include<stdio.h>  
+int main(){  
+    int refstring[] = {4,1,2,4,5,3,2,4,1,2,5};  
     int pageFaults = 0;  
     int frames = 3;  
-    int m, n, s, pages;   
-    pages = sizeof(incomingStream)/sizeof(incomingStream[0]);   
-    printf(" Incoming \ t Frame 1 \ t Frame 2 \ t Frame 3 ");  
-    int temp[ frames ];  
-    for(m = 0; m < frames; m++)  
+    int m,n,s,pages;   
+    pages = sizeof(refstring)/sizeof(refstring[0]);   
+    printf("Incoming Page\tFrame 1\t\tFrame 2\t\tFrame 3");  
+    int temp[frames];  
+    for(m=0;m<frames;m++)  
     {  
         temp[m] = -1;  
     }  
-    for(m = 0; m < pages; m++)  
+    for(m=0;m<pages;m++)  
     {  
-        s = 0;   
-        for(n = 0; n < frames; n++)  
+        s=0;   
+        for(n=0;n<frames;n++)  
         {  
-            if(incomingStream[m] == temp[n])  
+            if(refstring[m]==temp[n])  
             {  
                 s++;  
                 pageFaults--;  
             }  
         }  
         pageFaults++;  
-        if((pageFaults <= frames) && (s == 0))  
+        if((pageFaults<=frames) && (s == 0))  
         {  
-            temp[m] = incomingStream[m];  
+            temp[m]=refstring[m];  
         }  
-        else if(s == 0)  
+        else if(s==0)  
         {  
-            temp[(pageFaults - 1) % frames] = incomingStream[m];  
+            temp[(pageFaults-1) % frames] = refstring[m];  
         }  
         printf("\n");  
-        printf("%d\t\t\t",incomingStream[m]);  
-        for(n = 0; n < frames; n++)  
+        printf("%d\t\t",refstring[m]);  
+        for(n=0;n<frames;n++)  
         {  
-            if(temp[n] != -1)  
-                printf(" %d\t\t\t", temp[n]);  
+            if(temp[n]!=-1)  
+                printf(" %d\t\t", temp[n]);  
             else  
-                printf(" - \t\t\t");  
+                printf(" - \t\t");  
         }  
     }  
     printf("\nTotal Page Faults:\t%d\n", pageFaults);  
     return 0;  
-}  
+}
